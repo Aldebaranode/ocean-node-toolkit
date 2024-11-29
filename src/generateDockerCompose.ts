@@ -35,7 +35,7 @@ export function generateDockerCompose(allConfigs: NodeConfig[]) {
       P2P_ipV6BindAddress: '::'
       P2P_ipV6BindTcpPort: '9002'
       P2P_ipV6BindWsPort: '9003'
-      P2P_ANNOUNCE_ADDRESSES: '["/dns4/${conf.environment.IP_ADDRESS}/tcp/${conf.ports[1]}/p2p/", "/dns4/${conf.environment.IP_ADDRESS}/ws/tcp/${conf.ports[2]}", "/dns6/${conf.environment.IP_ADDRESS}/tcp/${conf.ports[3]}/p2p/", "/dns6/${conf.environment.IP_ADDRESS}/ws/tcp/${conf.ports[4]}"]'
+      P2P_ANNOUNCE_ADDRESSES: '["/ip4/${conf.environment.IP_ADDRESS}/tcp/${conf.ports[1]}", "/ip4/${conf.environment.IP_ADDRESS}/ws/tcp/${conf.ports[2]}"]'
     networks:
       - ocean_network
     depends_on:

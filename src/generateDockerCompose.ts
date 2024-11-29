@@ -47,7 +47,7 @@ export function generateDockerCompose(allConfigs: NodeConfig[]) {
 version: "3.8"
 services:
 ${oceanNodeServices.join("\n")}
-  typesense:
+  ${TYPESENSE_CONTAINER_NAME}:
     image: typesense/typesense:26.0
     container_name: ${TYPESENSE_CONTAINER_NAME}
     ports:

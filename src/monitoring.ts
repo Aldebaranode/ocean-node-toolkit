@@ -136,7 +136,7 @@ async function monitorNodes() {
         `Node ID: ${node.id}, Uptime: ${node.uptime}, Version: ${node.version}, IP: ${node.ipAndDns.ip}, Port: ${node.ipAndDns.port}}`
       ).join('\n');
 
-      console.warn(`⚠️ Ocean Ineligible Nodes Not Restarted, Please manually restart:\n${message}`);
+      await sendAlert(`⚠️ Ocean Ineligible Nodes Not Restarted, Please manually restart:\n${message}`);
     }
 
   } catch (error) {

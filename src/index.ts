@@ -1,4 +1,6 @@
 import { config } from "dotenv";
+config();
+
 import { generateWallets } from "./generateWallets";
 import {
   stopDockerServices,
@@ -10,8 +12,6 @@ import {
 } from "./configs/nodeConfig";
 import { getEnvironmentConfig, isValidConfig } from "./configs/envConfig";
 import { startNodeCronProcess } from "./monitoring";
-
-config();
 
 async function main(): Promise<void> {
   const { totalNodes, seedPhrase, allowedAdmins, ipAddress } = getEnvironmentConfig();

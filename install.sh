@@ -1,13 +1,3 @@
-
-if ! command -v docker &> /dev/null
-then
-    echo "Docker is not installed. Please install Docker to proceed."
-    exit 1
-else
-    echo "Docker is installed."
-fi
-
-
 function install_docker() {
     echo "Installing Docker..."
 

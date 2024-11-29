@@ -123,6 +123,12 @@ async function monitorNodes() {
       }
     });
 
+    const totalNodesCount = nodeData.length;
+    const eligibleNodesCount = nodeData.filter(node => node._source.eligible).length;
+    const ineligibleNodesCount = totalNodesCount - eligibleNodesCount;
+
+    await sendAlert(`🌊 Ocean Monitoring Alert: Total Nodes: ${totalNodesCount}, Eligible Nodes: ${eligibleNodesCount}, Ineligible Nodes: ${ineligibleNodesCount}, IP Address: ${ipAddress}`);
+
     if (ineligibleNodesRestarted.length > 0) {
       const message = ineligibleNodesRestarted.map(node =>
         `Node ID: ${node.id}, Uptime: ${node.uptime}, Version: ${node.version}, IP: ${node.ipAndDns.ip}, Port: ${node.ipAndDns.port}, Container Name: ${getContainerName(node.ipAndDns.port) || 'N/A'}`
@@ -147,6 +153,7 @@ async function monitorNodes() {
 
 export function startNodeCronProcess() {
   // Schedule a task to run every hour
+  monitorNodes()
   cron.schedule(process.env.CRON_SCHEDULE || '0 */3 * * *', async () => {
     try {
       monitorNodes()

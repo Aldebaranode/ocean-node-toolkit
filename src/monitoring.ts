@@ -84,7 +84,7 @@ async function fetchNodeData(totalNodes: number, ipAddress: string): Promise<Fet
       throw new Error(`Failed to fetch node data: ${response.statusText}`);
     }
     const data = await response.json();
-    return data;
+    return data.nodes;
   } catch (error) {
     console.error("Error fetching node data:", error);
     throw error;
@@ -102,7 +102,7 @@ async function monitorNodes() {
     }
     const nodeData = await fetchNodeData(totalNodes, ipAddress);
 
-    if (!Array.isArray(nodeData)) {
+    if (!Array.isArray(nodeData) || nodeData.length === 0) {
       console.warn("Node is not yet indexed:", nodeData);
       return;
     }

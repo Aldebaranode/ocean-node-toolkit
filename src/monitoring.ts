@@ -101,6 +101,12 @@ async function monitorNodes() {
       return
     }
     const nodeData = await fetchNodeData(totalNodes, ipAddress);
+
+    if (!Array.isArray(nodeData)) {
+      console.warn("Node is not yet indexed:", nodeData);
+      return;
+    }
+
     const ineligibleNodesRestarted: NodeSource[] = []
     const ineligibleNodesNotRestarted: NodeSource[] = []
 

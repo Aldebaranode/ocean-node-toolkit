@@ -94,7 +94,7 @@ export function restartNode(containerName: string): void {
 
 export function getContainerName(port: number): string | null {
   try {
-    const command = `docker container ls | grep ${prefix} | grep ${port} | awk '{print $NF}'`;
+    const command = `docker container ls --filter "publish=${port}" --format "{{.Names}}"`;
     const containerName = execSync(command, { encoding: 'utf-8' }).trim();
     return containerName || null;
   } catch (error) {

@@ -14,6 +14,7 @@ cd ocean-node-toolkit
 
 ```bash
 bash install.sh
+source ~/.bashrc
 ```
 
 3. **Set up environment variables:**

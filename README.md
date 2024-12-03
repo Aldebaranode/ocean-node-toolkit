@@ -47,7 +47,7 @@ pm2 start npm --name ocean-protocol -- run start
 
 ## Output
 
-The project includes a Docker Compose setup and generates a JSON list containing private key information, which will be stored in the `output` folder. Below are the details:
+The project includes a Docker Compose setup and generates a JSON list containing private key information, which will be stored in the `output` folder. 
 
 
 
